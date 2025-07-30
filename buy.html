@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buy $GREENLY</title>
+  <style>
+    :root {
+      --primary: #2a8d2a;
+      --primary-light: #4bbd4b;
+      --bg: #f0fff0;
+      --text: #2d6a2d;
+      --card-bg: #e8f7e8;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to top, #c1f1c1 0%, #a3dba3 100%);
+      color: var(--text);
+      padding: 40px 20px;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.4s ease-in-out;
+    }
+
+    /* Tree shapes */
+    .tree {
+      position: absolute;
+      bottom: 0;
+      width: 40px;
+      height: 100px;
+      background: #3b6c3b;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      z-index: 0;
+    }
+    .tree::after {
+      content: "";
+      position: absolute;
+      top: 90%;
+      left: 45%;
+      width: 10px;
+      height: 30px;
+      background: #5a3d1e;
+    }
+
+    .tree1 { left: 10%; height: 80px; width: 30px; }
+    .tree2 { left: 30%; }
+    .tree3 { left: 60%; height: 90px; }
+    .tree4 { left: 85%; width: 35px; }
+
+    /* Clouds */
+    .cloud {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      z-index: 0;
+      opacity: 0.9;
+    }
+
+    .cloud1 {
+      top: 50px; left: 20%;
+      width: 80px; height: 40px;
+    }
+    .cloud1::before, .cloud1::after {
+      content: "";
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+    }
+    .cloud1::before {
+      width: 40px; height: 40px;
+      top: -20px; left: 10px;
+    }
+    .cloud1::after {
+      width: 30px; height: 30px;
+      top: -10px; left: 50px;
+    }
+
+    .cloud2 {
+      top: 100px; left: 65%;
+      width: 70px; height: 35px;
+    }
+    .cloud2::before, .cloud2::after {
+      content: "";
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+    }
+    .cloud2::before {
+      width: 35px; height: 35px;
+      top: -15px; left: 5px;
+    }
+    .cloud2::after {
+      width: 25px; height: 25px;
+      top: -10px; left: 40px;
+    }
+
+    h1 {
+      font-size: 2.6em;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--primary);
+      position: relative;
+      z-index: 10;
+    }
+    .subtitle { font-size: 1.2em; margin-bottom: 30px; position: relative; z-index: 10; }
+    .card {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 10;
+    }
+
+    a, button {
+      font-weight: 600;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin: 10px;
+      text-decoration: none;
+      position: relative;
+      z-index: 10;
+    }
+
+    .btn {
+      background: var(--primary);
+      color: white;
+      font-size: 1em;
+      padding: 12px 24px;
+      display: inline-block;
+      text-align: center;
+      min-width: 160px;
+      border: 2px solid var(--primary);
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    .btn-back {
+      background: white;
+      color: var(--primary);
+      font-size: 1em;
+      padding: 10px 20px;
+      border: 1px solid var(--primary);
+    }
+
+    .instruction {
+      margin-top: 20px;
+      font-size: 1.05em;
+      line-height: 1.6;
+      position: relative;
+      z-index: 10;
+    }
+
+    .instruction li {
+      margin-bottom: 12px;
+      position: relative;
+      padding-left: 20px;
+    }
+    .instruction li::before {
+      content: "•";
+      color: var(--primary);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    .note {
+      margin-top: 30px;
+      font-style: italic;
+      font-size: 0.9em;
+      text-align: center;
+      color: #4a8a4a;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Language button moved below instruction */
+    .lang-btn {
+      display: block;
+      margin: 30px auto 0;
+      background: white;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      font-size: 1.2em;
+      padding: 8px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+    .lang-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    @media(max-width: 480px) {
+      h1 { font-size: 2em; }
+      .btn { padding: 10px 18px; font-size: 0.95em; }
+      .instruction li { font-size: 0.95em; }
+      .lang-btn { font-size: 1.1em; padding: 6px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Elements -->
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+  <div class="tree tree1"></div>
+  <div class="tree tree2"></div>
+  <div class="tree tree3"></div>
+  <div class="tree tree4"></div>
+
+  <!-- Main Content -->
+  <h1 id="title">$GREENLY</h1>
+  <p id="subtitle" class="subtitle">One token. One action. One planet.</p>
+
+  <div class="card">
+    <p id="desc" class="instruction">Choose a platform to buy:</p>
+
+    <a href="https://example.com/uniswap" class="btn" target="_blank" rel="noopener noreferrer" id="btnUniswap">Uniswap</a>
+    <a href="https://example.com/pancakeswap" class="btn" target="_blank" rel="noopener noreferrer" id="btnPancake">PancakeSwap</a>
+    <a href="index.html" class="btn btn-back" id="btnBack">⬅️ Back</a>
+
+    <h2 id="instructionTitle" class="subtitle" style="margin-top: 30px;">How to buy $GREENLY</h2>
+    <ul id="instructionList" class="instruction">
+      <li>Connect your crypto wallet (MetaMask, TrustWallet, etc.) to the platform.</li>
+      <li>Ensure you have enough ETH or BNB to swap for $GREENLY tokens.</li>
+      <li>Select the amount of $GREENLY tokens you want to buy.</li>
+      <li>Confirm the transaction in your wallet and wait for confirmation.</li>
+      <li>Enjoy your $GREENLY tokens and join the green movement!</li>
+    </ul>
+
+    <!-- Language switch button placed under the instruction -->
+    <button class="lang-btn" id="langBtn">🇷🇺</button>
+  </div>
+
+  <p class="note" id="note">No numbers. No limits. Just purpose.</p>
+
+  <script>
+    const texts = {
+      en: {
+        title: "$GREENLY",
+        subtitle: "One token. One action. One planet.",
+        desc: "Choose a platform to buy:",
+        instructionTitle: "How to buy $GREENLY",
+        instructionList: [
+          "Connect your crypto wallet (MetaMask, TrustWallet, etc.) to the platform.",
+          "Ensure you have enough ETH or BNB to swap for $GREENLY tokens.",
+          "Select the amount of $GREENLY tokens you want to buy.",
+          "Confirm the transaction in your wallet and wait for confirmation.",
+          "Enjoy your $GREENLY tokens and join the green movement!"
+        ],
+        back: "⬅️ Back",
+        uniswap: "Uniswap",
+        pancakeswap: "PancakeSwap",
+        langBtn: "🇷🇺"
+      },
+      ru: {
+        title: "$GREENLY",
+        subtitle: "Один токен. Один шаг. Одна планета.",
+        desc: "Выберите платформу для покупки:",
+        instructionTitle: "Как купить $GREENLY",
+        instructionList: [
+          "Подключите ваш криптокошелек (MetaMask, TrustWallet и др.) к платформе.",
+          "Убедитесь, что у вас достаточно ETH или BNB для обмена на токены $GREENLY.",
+          "Выберите количество токенов $GREENLY для покупки.",
+          "Подтвердите транзакцию в кошельке и дождитесь подтверждения.",
+          "Наслаждайтесь вашими токенами $GREENLY и присоединяйтесь к зелёному движению!"
+        ],
+        back: "⬅️ Назад",
+        uniswap: "Uniswap",
+        pancakeswap: "PancakeSwap",
+        langBtn: "🇺🇸"
+      }
+    };
+
+    let lang = localStorage.getItem("lang") || "en";
+
+    function applyLang() {
+      const t = texts[lang];
+      document.getElementById("title").textContent = t.title;
+      document.getElementById("subtitle").textContent = t.subtitle;
+      document.getElementById("desc").textContent = t.desc;
+      document.getElementById("instructionTitle").textContent = t.instructionTitle;
+
+      const ul = document.getElementById("instructionList");
+      ul.innerHTML = "";
+      t.instructionList.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        ul.appendChild(li);
+      });
+
+      document.getElementById("btnBack").textContent = t.back;
+      document.getElementById("btnUniswap").textContent = t.uniswap;
+      document.getElementById("btnPancake").textContent = t.pancakeswap;
+      document.getElementById("langBtn").textContent = t.langBtn;
+
+      localStorage.setItem("lang", lang);
+    }
+
+    document.getElementById("langBtn").addEventListener("click", () => {
+      lang = lang === "en" ? "ru" : "en";
+      applyLang();
+    });
+
+    // Initialize language
+    applyLang();
+  </script>
+</body>
+</html>
